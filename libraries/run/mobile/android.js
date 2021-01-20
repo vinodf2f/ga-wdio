@@ -3,6 +3,7 @@ const {
 } = require("../../helpers/path");
 const common = require("./common");
 const { exist } = require("../../helpers/validate");
+const {startAppium} = require('../../drivers/appium')
 
 const android = {};
 
@@ -26,11 +27,15 @@ android.init = async (_options) => {
 
 			if (_options.browser === "true") {
 				const _path = androidBrowserConf();
+				const  result = await startAppium();
+				console.log(result,"result");
 				return await common.execute(_path);
 			}
 
 			if (_options.browser === "false") {
 				const _path = androidConf();
+				const  result = await startAppium();
+				console.log(result,"result");
 				return await common.execute(_path);
 			}
 	}
